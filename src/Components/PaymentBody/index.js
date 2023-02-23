@@ -21,6 +21,10 @@ const PaymentBody = () => {
     setPortalOpen(false);
     setPortalVal({});
   };
+  const handleAddPayment = () => {
+    setPortalOpen(true);
+    setPortalVal({ type: "add" });
+  };
   const renderValues = paymentState?.map((item) => {
     return (
       <PaymentContainer id={item?.id}>
@@ -53,7 +57,9 @@ const PaymentBody = () => {
           <h1>Payment Type</h1>
           <PayAct>
             <SearchBar type="text" placeholder="Search By Name" />
-            <NewPay className="btn btn-primary">+Payment Type</NewPay>
+            <NewPay className="btn btn-primary" onClick={handleAddPayment}>
+              +Payment Type
+            </NewPay>
           </PayAct>
         </PaymentActions>
         <PaymentContainer>
@@ -83,11 +89,23 @@ const PaymentBody = () => {
                 </div>
               </ActionsContainer>
             </ConfirmActions>
-          ) : (
+          ) : portalVal?.type === "delete" ? (
             <ConfirmActions>
               <h4>
                 Do you want to Delete the {portalVal?.val?.nameVal} document?
               </h4>
+              <ActionsContainer className="portalActions">
+                <div className="btn" onClick={handleClosePortal}>
+                  YES
+                </div>
+                <div className="btn" onClick={handleClosePortal}>
+                  No
+                </div>
+              </ActionsContainer>
+            </ConfirmActions>
+          ) : (
+            <ConfirmActions>
+              <h4>Do you want to Add new Payment document?</h4>
               <ActionsContainer className="portalActions">
                 <div className="btn" onClick={handleClosePortal}>
                   YES
