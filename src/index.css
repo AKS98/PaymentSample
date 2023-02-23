@@ -99,13 +99,13 @@ img{
 
 /* Media Queries(Medium Devices) */
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1200px) {
   .container {
     width: var(--container-width-md);
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 760px) {
   .container {
     width: var(--container-width-sm);
   }
